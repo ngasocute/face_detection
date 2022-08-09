@@ -33,7 +33,7 @@ def extract_index_nparray(nparray):
 
 def FaceSwap(image, image2, save_dir):
     
-    # make_dir(save_dir)
+    make_dir(save_dir)
     
     #convert to gray image
     img_gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
@@ -176,7 +176,7 @@ def FaceSwap(image, image2, save_dir):
         final_result = cv.seamlessClone(result, image2, img2_head_mask,
                                     center_face2, cv.NORMAL_CLONE)
     #save the result image
-    # cv.imwrite(save_dir + '/face_swap_image_68_landmark_points.jpg', final_result) 
+    cv.imwrite(save_dir + '/face_swap_image_68_landmark_points.jpg', final_result) 
     #show the result image
     cv.imshow('source image', resized_image(image))
     cv.imshow('destination image', resized_image(image2))
