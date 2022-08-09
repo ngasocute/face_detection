@@ -7,10 +7,10 @@ try:
 except Exception as e:
     print('Caught error while importing: {}'.format(e))
     
-SAVE_DIR = './face_swapped'
+SAVE_DIR = './Face Mesh Detection Example/face_swapped'
 SRC_IMAGE = './Face Mesh Detection Example/Photos/long.jpg'
 DST_IMAGE = './Face Mesh Detection Example/Photos/man_2.jpg'
-DAT_FILE = 'D:/Python/Blending/shape_predictor_68_face_landmarks.dat'
+DAT_FILE = './Face Mesh Detection Example/shape_predictor_68_face_landmarks.dat'
 
 def make_dir(directory):
     if not os.path.exists(directory):
@@ -33,7 +33,7 @@ def extract_index_nparray(nparray):
 
 def FaceSwap(image, image2, save_dir):
     
-    make_dir(save_dir)
+    # make_dir(save_dir)
     
     #convert to gray image
     img_gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
@@ -176,7 +176,7 @@ def FaceSwap(image, image2, save_dir):
         final_result = cv.seamlessClone(result, image2, img2_head_mask,
                                     center_face2, cv.NORMAL_CLONE)
     #save the result image
-    cv.imwrite(save_dir + '/face_swap_image_68_landmark_points.jpg', final_result) 
+    # cv.imwrite(save_dir + '/face_swap_image_68_landmark_points.jpg', final_result) 
     #show the result image
     cv.imshow('source image', resized_image(image))
     cv.imshow('destination image', resized_image(image2))
@@ -184,7 +184,7 @@ def FaceSwap(image, image2, save_dir):
     cv.waitKey(0) 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='swapping image face')
+    parser = argparse.ArgumentParser(description='swapping image face 68 face lanmark points')
     parser.add_argument('--sav', help='save dir', default=SAVE_DIR, type=str)
     parser.add_argument('-src', '--source-image', help="face to swap", default=SRC_IMAGE, type=str)
     parser.add_argument('-dst', '--destination-image', help='background to swap', default=DST_IMAGE, type=str)

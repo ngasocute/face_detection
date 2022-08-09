@@ -2,6 +2,7 @@ try:
     import cv2 as cv
     import mediapipe as mp
     import os
+    import argparse
 except Exception as e:
     print('Caught error while importing {}'.format(e))
 
@@ -28,16 +29,15 @@ def resize_image(image, height_size=500):
                             interpolation=cv.INTER_AREA)
     return resized_image
 
-def get_face_mesh_detection():
+def get_face_mesh_detection(img_dir, save_dir):
 
-    make_dir(SAVE_DIR)
+    make_dir(save_dir)
 
-    list_dir = os.listdir(IMAGE_DIR)
+    list_dir = os.listdir(img_dir)
     #import the main face detection model
     mp_drawing = mp.solutions.drawing_utils
     mp_drawing_styles = mp.solutions.drawing_styles
     mp_face_mesh = mp.solutions.face_mesh
-    drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
 
     with mp_face_mesh.FaceMesh(
         static_image_mode = STATIC_IMAGE_MODE,
@@ -50,7 +50,7 @@ def get_face_mesh_detection():
 
             #print image information
             height, width = image.shape[:2]
-            print('{} {}'.format(indx + 1, IMAGE_DIR + '/' + file))
+            print('{} {}'.format(indx + 1, save_dir + '/' + file))
             print('(width, height) = ({}, {})'.format(width, height))
 
             #get face mesh results
@@ -70,10 +70,15 @@ def get_face_mesh_detection():
                     connection_drawing_spec=mp_drawing_styles.get_default_face_mesh_tesselation_style()
                 )
             #save image
-            cv.imwrite(SAVE_DIR + '/' + file, annotated_image)
+            cv.imwrite(save_dir + '/' + file, annotated_image)
             # #show image
-            # cv.imshow('face_detection', annotated_image)
-            # cv.waitKey(0)
+            cv.imshow('face_detection', annotated_image)
+            cv.waitKey(0)
 
 if __name__ == '__main__':
-    get_face_mesh_detection()
+    parser = argparse.ArgumentParser(description='face detection')
+    parser.add_argument('--sav', help='save dir', default=SAVE_DIR, type=str)
+    parser.add_argument('-dir', '--dir-image', help="folder of image", default=IMAGE_DIR, type=str)
+    args = parser.parse_args()
+    
+    get_face_mesh_detection(args.dir_image, args.sav)

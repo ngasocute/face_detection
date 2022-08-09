@@ -106,7 +106,7 @@ def delaunay_triangle(img_path, save_dir):
             cv.waitKey(0)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='swapping image face')
+    parser = argparse.ArgumentParser(description='delaunay triangulation')
     parser.add_argument('--sav', help='save dir', default=SAVE_DIR, type=str)
     parser.add_argument('-src', '--source-image', help="face to swap", default=IMAGE, type=str)
     args = parser.parse_args()

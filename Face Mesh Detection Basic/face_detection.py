@@ -3,6 +3,7 @@ try:
     import mediapipe as mp
     import os
     import json
+    import argparse
 except Exception as e:
     print('Caught error while importing {}'.format(e))
 
@@ -37,11 +38,11 @@ def draw_rectangle(image, location:list):
                 thickness=1)
     return image
 
-def get_face_detection():
+def get_face_detection(image_dir, save_dir):
 
-    make_dir(SAVE_DIR)
+    make_dir(save_dir)
 
-    list_dir = os.listdir(IMAGE_DIR)
+    list_dir = os.listdir(image_dir)
     #import the main face detection model
     mp_face_detection = mp.solutions.face_detection
 
@@ -51,13 +52,13 @@ def get_face_detection():
         #extract each image in folder
         for indx, file in enumerate(list_dir):
             #read image
-            image = cv.imread(IMAGE_DIR + '/' + file)
+            image = cv.imread(image_dir + '/' + file)
             #resize image to fil screen
             image = resize_image(image)
             height, width = image.shape[:2] #height and width of image
             
             #print image information
-            print('{} {}'.format(indx + 1, IMAGE_DIR + '/' + file))
+            print('{} {}'.format(indx + 1, image_dir + '/' + file))
             print('(width, height) = ({}, {})'.format(width, height))
             
             #find faces
@@ -89,20 +90,25 @@ def get_face_detection():
 
                 location.append(json_data)
             data.append({
-                'filename': IMAGE_DIR + '/' + file,
+                'filename': image_dir + '/' + file,
                 'face_detection': location
             })
             #save image
-            cv.imwrite(SAVE_DIR + '/' + file, annotated_image)
+            cv.imwrite(image_dir + '/' + file, annotated_image)
             #show image
-            # cv.imshow('face_detection', annotated_image)
-            # cv.waitKey(0)
+            cv.imshow('face_detection', annotated_image)
+            cv.waitKey(0)
         
-        write_json(SAVE_DIR + '/face_detection_results.json', data=data)
+        write_json(image_dir + '/face_detection_results.json', data=data)
 
 def write_json(filename, data):
     with open(filename, 'w', encoding='utf8') as f:
         json.dump(data, f, indent=4, ensure_ascii= False)
 
 if __name__ == '__main__':
-    get_face_detection()
+    parser = argparse.ArgumentParser(description='face detection')
+    parser.add_argument('--sav', help='save dir', default=SAVE_DIR, type=str)
+    parser.add_argument('-dir', '--dir-image', help="folder of image", default=IMAGE_DIR, type=str)
+    args = parser.parse_args()
+    
+    get_face_detection(args.dir_image, args.sav)

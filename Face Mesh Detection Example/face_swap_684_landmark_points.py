@@ -169,7 +169,7 @@ def face_swap(src, dts, save_dir):
         
         
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='swapping image face')
+    parser = argparse.ArgumentParser(description='swapping image face 684 face landmark points')
     parser.add_argument('--sav', help='save dir', default=SAVE_DIR, type=str)
     parser.add_argument('-src', '--source-image', help="face to swap", default=SRC_IMAGE, type=str)
     parser.add_argument('-dst', '--destination-image', help='background to swap', default=DST_IMAGE, type=str)
