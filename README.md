@@ -76,3 +76,33 @@ Face swap 68 face landmark points:
 ```
 py face_swapping.py [-h] [--sav SAV] [-src SOURCE_IMAGE] [-dst DESTINATION_IMAGE]
 ```
+Face mesh detection and stick flag:
+- Running following command with `save_dir` (default: `Stick Flag Save Image`) and `source_image` (default: `DSC_6730.JPG`), `flag` (default: `vietnam_flag,jpg`):
+```
+py face_mesh_detection.py [-h] [-src SOURCE_IMAGE] [-flag FLAG] [--sav SAV]
+```
+```
+Stick flag to face
+
+options:
+  -h, --help            show this help message and exit
+  -src SOURCE_IMAGE, --source-image SOURCE_IMAGE
+                        face is sticked
+  -flag FLAG            image to stick into face
+  --sav SAV             save dir
+```
+Geometric Art:
+- Running following command with `save_dir` (default: `Geometric Art Save Image`), `source_image` (default: `long.jpg`) and `model` (default: 1):
+```
+py geomrtric_art.py [-h] [-src SOURCE_IMAGE] [--model MODEL] [--sav SAV]
+```
+```
+Geometric art
+
+options:
+  -h, --help            show this help message and exit
+  -src SOURCE_IMAGE, --source-image SOURCE_IMAGE
+                        face is make up
+  --model MODEL         algorithms to get color: 1 is min and 0 is max
+  --sav SAV             save dir
+```
