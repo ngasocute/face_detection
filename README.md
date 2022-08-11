@@ -5,6 +5,11 @@ Library:
 - MediaPipe
 ```
 pip install mediapipe
+pip install mediapipe-silicon
+```
+```
+mediapipe>=0.8.9; platform_system != "Darwin" and platform.machine != 'arm64'
+mediapipe-silicon>=0.8.9; platform_system == "Darwin" and platform.machine == 'arm64'
 ```
 - OpenCv
 ```
