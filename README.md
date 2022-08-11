@@ -5,6 +5,11 @@ Library:
 - MediaPipe
 ```
 pip install mediapipe
+pip install mediapipe-silicon
+```
+```
+mediapipe>=0.8.9; platform_system != "Darwin" and platform.machine != 'arm64'
+mediapipe-silicon>=0.8.9; platform_system == "Darwin" and platform.machine == 'arm64'
 ```
 - OpenCv
 ```
@@ -66,10 +71,10 @@ Delaunay Triangulation:
 ```
 py delaunay_triangulation.py [-h] [--sav SAV] [-src SOURCE_IMAGE]
 ```
-Face swap 684 face landmark points:
+Face swap 468 face landmark points:
 - Running following command with `save_dir` (default: `face_swapped`) and `source_image` (default: `long.jpg`), `destination_image` (default: `man_2.jpg`):
 ```
-py face_swap_684_landmark_points.py [-h] [--sav SAV] [-src SOURCE_IMAGE] [-dst DESTINATION_IMAGE]
+py face_swap_468_landmark_points.py [-h] [--sav SAV] [-src SOURCE_IMAGE] [-dst DESTINATION_IMAGE]
 ```
 Face swap 68 face landmark points:
 - Running following command with `save_dir` (default: `face_swapped`) and `source_image` (default: `long.jpg`), `destination_image` (default: `man_2.jpg`):
