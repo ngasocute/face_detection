@@ -39,7 +39,7 @@ def draw_rectangle(image, location:list):
     return image
 
 def get_face_detection(image_dir, save_dir):
-
+    print(save_dir)
     make_dir(save_dir)
 
     list_dir = os.listdir(image_dir)
@@ -99,7 +99,7 @@ def get_face_detection(image_dir, save_dir):
             cv.imshow('face_detection', annotated_image)
             cv.waitKey(0)
         
-        write_json(save_dir + '/face_detection_results.json', data=data)
+        write_json('./face_detection_results.json', data=data)
 
 def write_json(filename, data):
     with open(filename, 'w', encoding='utf8') as f:
@@ -110,5 +110,5 @@ if __name__ == '__main__':
     parser.add_argument('--sav', help='save dir', default=SAVE_DIR, type=str)
     parser.add_argument('-dir', '--dir-image', help="folder of image", default=IMAGE_DIR, type=str)
     args = parser.parse_args()
-    
+    print(args.sav)
     get_face_detection(args.dir_image, args.sav)
