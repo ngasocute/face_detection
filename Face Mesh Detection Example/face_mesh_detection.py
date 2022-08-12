@@ -182,6 +182,10 @@ def get_landmark_points(image, face_landmarks, mask):
     landmark_points = list([(face_landmarks.landmark[ind].x * width, face_landmarks.landmark[ind].y * height) for ind in list_mask])
     return landmark_points
 
+def get_name_image(image_dir):
+    name = image_dir.split('/')[-1]
+    return name
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Stick flag to face')
     parser.add_argument('-src', '--source-image', help="face is sticked", default=IMAGE_PATH, type=str)
@@ -199,6 +203,6 @@ if __name__ == '__main__':
         x, y, w, h = face_detection
         #debug
         # print("{} {} {} {}".format(x, y, w, h))
-        save_image = args.sav + '/' + 'image_' + str(num)
+        save_image = args.sav + '/' + get_name_image(args.source_image) + '/' + 'image_' + str(num)
         make_dir(save_image)
         get_face_mesh(args.source_image, x, y, w, h, args.flag, save_image)
