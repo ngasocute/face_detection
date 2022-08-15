@@ -7,8 +7,8 @@ try:
 except Exception as e:
     print('Caught error while importing {}'.format(e))
 
-IMAGE_DIR = './Face Mesh Detection Basic/Photos'
-SAVE_DIR = './Face Mesh Detection Basic/FaceDetectionSavedImage'
+IMAGE_DIR = 'Face Mesh Detection Basic/Photos'
+SAVE_DIR = 'Face Mesh Detection Basic/FaceDetectionSavedImage'
 
 #face detection model
 MODEL_SELECTION = 1
@@ -39,7 +39,7 @@ def draw_rectangle(image, location:list):
     return image
 
 def get_face_detection(image_dir, save_dir):
-    print(save_dir)
+
     make_dir(save_dir)
 
     list_dir = os.listdir(image_dir)
@@ -97,8 +97,9 @@ def get_face_detection(image_dir, save_dir):
             cv.imwrite(save_dir + '/' + file, annotated_image)
             #show image
             cv.imshow('face_detection', annotated_image)
-            cv.waitKey(0)
-        
+            #wait in 1 s
+            cv.waitKey(1000)
+            
         write_json('./face_detection_results.json', data=data)
 
 def write_json(filename, data):
@@ -110,5 +111,5 @@ if __name__ == '__main__':
     parser.add_argument('--sav', help='save dir', default=SAVE_DIR, type=str)
     parser.add_argument('-dir', '--dir-image', help="folder of image", default=IMAGE_DIR, type=str)
     args = parser.parse_args()
-    print(args.sav)
+    
     get_face_detection(args.dir_image, args.sav)

@@ -6,8 +6,10 @@ try:
 except Exception as e:
     print('Caught error while importing {}'.format(e))
 
-# IMAGE_DIR = './Face Mesh Detection Basic/Photos'
-# SAVE_DIR = './Face Mesh Detection Basic/FaceMeshDetectionSavedImage'
+
+IMAGE_DIR = 'Face Mesh Detection Basic/Photos'
+SAVE_DIR = 'Face Mesh Detection Basic/FaceMeshDetectionSavedImage'
+
 
 IMAGE_DIR = './Photos'
 SAVE_DIR = './FaceMeshDetectionSavedImage'
@@ -75,7 +77,7 @@ def get_face_mesh_detection(img_dir, save_dir):
             cv.imwrite(save_dir + '/' + file, annotated_image)
             # #show image
             cv.imshow('face_detection', annotated_image)
-            cv.waitKey(0)
+            cv.waitKey(1000)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='face detection')
