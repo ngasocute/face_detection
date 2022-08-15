@@ -97,8 +97,9 @@ def get_face_detection(image_dir, save_dir):
             cv.imwrite(save_dir + '/' + file, annotated_image)
             #show image
             cv.imshow('face_detection', annotated_image)
-            cv.waitKey(0)
-        
+            #wait in 1 s
+            cv.waitKey(1000)
+            
         write_json('./face_detection_results.json', data=data)
 
 def write_json(filename, data):
