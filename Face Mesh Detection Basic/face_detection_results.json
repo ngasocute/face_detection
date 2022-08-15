@@ -1,0 +1,80 @@
+[
+    {
+        "filename": "./Photos/DSC_6537.JPG",
+        "face_detection": [
+            {
+                "x": 342,
+                "y": 211,
+                "width": 70,
+                "height": 70
+            },
+            {
+                "x": 473,
+                "y": 199,
+                "width": 81,
+                "height": 81
+            }
+        ]
+    },
+    {
+        "filename": "./Photos/DSC_6730.JPG",
+        "face_detection": [
+            {
+                "x": 271,
+                "y": 205,
+                "width": 61,
+                "height": 61
+            },
+            {
+                "x": 383,
+                "y": 204,
+                "width": 62,
+                "height": 62
+            }
+        ]
+    },
+    {
+        "filename": "./Photos/son.jpg",
+        "face_detection": [
+            {
+                "x": 86,
+                "y": 155,
+                "width": 100,
+                "height": 100
+            }
+        ]
+    },
+    {
+        "filename": "./Photos/man_2.jpg",
+        "face_detection": [
+            {
+                "x": 277,
+                "y": 108,
+                "width": 174,
+                "height": 174
+            }
+        ]
+    },
+    {
+        "filename": "./Photos/tan.jpg",
+        "face_detection": [
+            {
+                "x": 117,
+                "y": 137,
+                "width": 111,
+                "height": 111
+            }
+        ]
+    },
+    {
+        "filename": "./Photos/long.jpg",
+        "face_detection": [
+            {
+                "x": 73,
+                "y": 128,
+                "width": 86,
+                "height": 86
+            }
+        ]
+    }
+]
