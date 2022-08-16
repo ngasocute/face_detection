@@ -1,5 +1,16 @@
 [
     {
+        "filename": "./Photos/6.jpeg",
+        "face_detection": [
+            {
+                "x": 67,
+                "y": 83,
+                "width": 137,
+                "height": 137
+            }
+        ]
+    },
+    {
         "filename": "./Photos/4.jpg",
         "face_detection": [
             {
@@ -18,23 +29,6 @@
                 "y": 116,
                 "width": 125,
                 "height": 125
-            }
-        ]
-    },
-    {
-        "filename": "./Photos/6.jpg",
-        "face_detection": [
-            {
-                "x": 126,
-                "y": 76,
-                "width": 41,
-                "height": 41
-            },
-            {
-                "x": 193,
-                "y": 127,
-                "width": 36,
-                "height": 36
             }
         ]
     },

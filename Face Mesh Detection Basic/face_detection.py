@@ -7,10 +7,9 @@ try:
 except Exception as e:
     print('Caught error while importing {}'.format(e))
 
-# IMAGE_DIR = 'Face Mesh Detection Basic/Photos'
-# SAVE_DIR = 'Face Mesh Detection Basic/FaceDetectionSavedImage'
-
+# folder image before detect
 IMAGE_DIR = './Photos'
+# save folder image after detect
 SAVE_DIR = './FaceDetectionSavedImage'
 
 #face detection model
