@@ -6,8 +6,8 @@ try:
 except Exception as e:
     print('Caught error while importing {}'.format(e))
 
-IMAGE_DIR = 'Face Mesh Detection Basic/Photos'
-SAVE_DIR = 'Face Mesh Detection Basic/FaceMeshDetectionSavedImage'
+IMAGE_DIR = '/Face Mesh Detection Basic/Photos'
+SAVE_DIR = '/Face Mesh Detection Basic/FaceMeshDetectionSavedImage'
 
 #face_mesh_model
 STATIC_IMAGE_MODE = True
@@ -81,4 +81,6 @@ if __name__ == '__main__':
     parser.add_argument('-dir', '--dir-image', help="folder of image", default=IMAGE_DIR, type=str)
     args = parser.parse_args()
     
-    get_face_mesh_detection(args.dir_image, args.sav)
+    current_path = os.getcwd()
+    
+    get_face_mesh_detection(current_path + args.dir_image, current_path + args.sav)

@@ -7,8 +7,8 @@ try:
 except Exception as e:
     print('Caught error while importing {}'.format(e))
 
-IMAGE_DIR = 'Face Mesh Detection Basic/Photos'
-SAVE_DIR = 'Face Mesh Detection Basic/FaceDetectionSavedImage'
+IMAGE_DIR = '/Face Mesh Detection Basic/Photos'
+SAVE_DIR = '/Face Mesh Detection Basic/FaceDetectionSavedImage'
 
 #face detection model
 MODEL_SELECTION = 1
@@ -17,6 +17,11 @@ MIN_DETECTION_CONFIDENCE = 0.5
 def make_dir(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
+
+def find_file(name, path):
+    for dirpath, dirname, filename in os.walk(path):
+        if name in filename:
+            return os.path.join(dirpath, name)
 
 # resize image to standard image 
 def resize_image(image, height_size=500):
@@ -112,4 +117,6 @@ if __name__ == '__main__':
     parser.add_argument('-dir', '--dir-image', help="folder of image", default=IMAGE_DIR, type=str)
     args = parser.parse_args()
     
-    get_face_detection(args.dir_image, args.sav)
+    current_path = os.getcwd()
+    
+    get_face_detection(current_path + args.dir_image, current_path + args.sav)
