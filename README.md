@@ -1,6 +1,11 @@
 ## **Face Mesh Detection**
 
 ## Requirements
+Setup env:
+```
+virtualenv venv
+source venv/bin/activate
+```
 Library:
 - MediaPipe
 ```
