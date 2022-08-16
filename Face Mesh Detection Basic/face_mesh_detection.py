@@ -7,8 +7,8 @@ except Exception as e:
     print('Caught error while importing {}'.format(e))
 
 
-IMAGE_DIR = 'Face Mesh Detection Basic/Photos'
-SAVE_DIR = 'Face Mesh Detection Basic/FaceMeshDetectionSavedImage'
+# IMAGE_DIR = 'Face Mesh Detection Basic/Photos'
+# SAVE_DIR = 'Face Mesh Detection Basic/FaceMeshDetectionSavedImage'
 
 
 IMAGE_DIR = './Photos'
